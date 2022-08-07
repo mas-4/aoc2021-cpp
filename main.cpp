@@ -4,5 +4,6 @@
 int main()
 {
     aoc01_1();
+    aoc02_2();
     return 0;
 }

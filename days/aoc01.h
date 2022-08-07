@@ -18,9 +18,11 @@ private:
 public:
     aoc01();
     uint32_t single_increases();
+    uint32_t window_increases();
 };
 
 void aoc01_1();
+void aoc02_2();
 
 
 #endif //AOC21CPP_AOC01_H
