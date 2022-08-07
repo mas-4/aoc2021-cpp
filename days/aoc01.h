@@ -22,7 +22,7 @@ public:
 };
 
 void aoc01_1();
-void aoc02_2();
+void aoc01_2();
 
 
 #endif //AOC21CPP_AOC01_H
