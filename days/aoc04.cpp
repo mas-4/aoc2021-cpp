@@ -30,7 +30,6 @@ void aoc04::readInput()
     }
     m_numbers.push_back(std::stoi(numbers_to_call.substr(start)));
     start = 0;
-    end = boards.find("\n\n", start);
     while ((end = boards.find("\n\n", start)) != std::string::npos)
     {
         Board board(boards.substr(start, end - start));
@@ -45,7 +44,6 @@ aoc04::aoc04()
 
 Board::Board(const std::string &input)
 {
-    size_t start = 0;
     // line length = 14 = nn nn nn nn nn
     m_data.resize(5 * 5);
     for (size_t i = 0; i < 5; i++)
@@ -158,7 +156,7 @@ uint64_t aoc04::part1()
 {
     size_t winner = 0;
     uint16_t winning_number = 0;
-    for (unsigned short number : m_numbers)
+    for (unsigned short number: m_numbers)
     {
         for (size_t j = 0; j < m_boards.size(); j++)
         {
@@ -171,12 +169,32 @@ uint64_t aoc04::part1()
             }
         }
     }
-    outer: std::cout << "Aoc 4.1: " << winning_number * m_boards[winner].score() << std::endl;
+    outer:
+    std::cout << "Aoc 4.1: " << winning_number * m_boards[winner].score() << std::endl;
     return 0;
 }
 
 uint64_t aoc04::part2()
 {
+    uint16_t winning_number = 0;
+    size_t last_winner = 0;
+    for (unsigned short number: m_numbers)
+    {
+        for (size_t i = 0; i < m_boards.size(); i++)
+        {
+            if (!m_boards[i].won())
+            {
+
+                m_boards[i].mark(number);
+                if (m_boards[i].won())
+                {
+                    last_winner = i;
+                    winning_number = number;
+                }
+            }
+        }
+    }
+    std::cout << "Aoc 4.2: " << winning_number * m_boards.at(last_winner).score() << std::endl;
     return 0;
 }
 
