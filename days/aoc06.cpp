@@ -35,14 +35,8 @@ aoc06::aoc06()
 
 }
 
-void aoc06::part1()
-{
-    auto *fishes = new uint64_t[9];
-    for (const auto &i : m_data)
-    {
-        fishes[i]++;
-    }
-    for (size_t i = 0; i < 80; i++) {
+uint64_t how_many_fish(uint64_t *fishes, size_t days) {
+    for (size_t i = 0; i < days; i++) {
         uint64_t day0fish = fishes[0];
         fishes[0] = fishes[1];
         fishes[1] = fishes[2];
@@ -53,16 +47,32 @@ void aoc06::part1()
         fishes[6] = fishes[7] + day0fish;
         fishes[7] = fishes[8];
         fishes[8] = day0fish;
-        for (size_t j = 0; j < 9; j++) {
-            std::cout << fishes[j] << " ";
-        }
-        std::cout << std::endl;
     }
     uint64_t total = 0;
     for (size_t i = 0; i < 9; i++) {
         total += fishes[i];
     }
-    std::cout << "AoC 6.1: " << total << std::endl;
+    return total;
+}
+
+void aoc06::part1()
+{
+    uint64_t fishes[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    for (const auto &i : m_data)
+    {
+        fishes[i]++;
+    }
+    std::cout << "AoC 6.1: " << how_many_fish(fishes, 80) << std::endl;
+}
+
+void aoc06::part2()
+{
+    uint64_t fishes[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    for (const auto &i : m_data)
+    {
+        fishes[i]++;
+    }
+    std::cout << "AoC 6.1: " << how_many_fish(fishes, 256) << std::endl;
 }
 
 aoc06::~aoc06() = default;
@@ -71,4 +81,10 @@ void aoc06_1()
 {
     aoc06 a;
     a.part1();
+}
+
+void aoc06_2()
+{
+    aoc06 a;
+    a.part2();
 }

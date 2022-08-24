@@ -18,5 +18,6 @@ int main()
     aoc05_1();
     aoc05_2();
     aoc06_1();
+    aoc06_2();
     return 0;
 }

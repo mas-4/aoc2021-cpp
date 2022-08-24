@@ -18,9 +18,11 @@ public:
     aoc06();
     ~aoc06();
     void part1();
+    void part2();
 };
 
 void aoc06_1();
+void aoc06_2();
 
 
 #endif //AOC21CPP_AOC06_H
