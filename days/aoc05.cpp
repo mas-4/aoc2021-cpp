@@ -16,19 +16,20 @@ void Grid::mark_restricted(Line line)
     }
     size_t x = line.x1;
     size_t y = line.y1;
-    while (x != line.x2 || y != line.y2) {
+    while (true) {
         // 1. Resize
-        if (x >= m_grid.size())
+        if (y >= m_grid.size())
         {
-            m_grid.resize(x + 1);
+            m_grid.resize(y + 1);
         }
-        if (y >= m_grid[x].size())
+        if (x >= m_grid[y].size())
         {
-            m_grid[x].resize(y + 1);
+            m_grid[y].resize(x + 1);
         }
 
         // 2. Mark
-        m_grid[x][y]++;
+        m_grid[y][x]++;
+        if (x == line.x2 && y == line.y2) break;
 
         // 3. Increment
         if (x < line.x2) {
@@ -42,10 +43,11 @@ void Grid::mark_restricted(Line line)
             y--;
         }
     }
-    std::cout << "Marked restricted line: " << line.x1 << "," << line.y1 << " -> " << line.x2 << "," << line.y2 << std::endl;
-    print();
+//    std::cout << "Marked restricted line: " << line.x1 << "," << line.y1 << " -> " << line.x2 << "," << line.y2 << std::endl;
+//    print();
 }
 
+[[maybe_unused]]
 void Grid::print()
 {
     for (auto & i : m_grid)
@@ -68,7 +70,7 @@ void Grid::print()
 
 void aoc05::readInput()
 {
-    std::ifstream input("input/aoc05-test.txt");
+    std::ifstream input("input/aoc05.txt");
     if (!input.is_open())
     {
         std::cout << "Could not open input file" << std::endl;
