@@ -170,7 +170,7 @@ uint64_t aoc04::part1()
         }
     }
     outer:
-    std::cout << "Aoc 4.1: " << winning_number * m_boards[winner].score() << std::endl;
+    std::cout << "AoC 4.1: " << winning_number * m_boards[winner].score() << std::endl;
     return 0;
 }
 
@@ -194,7 +194,7 @@ uint64_t aoc04::part2()
             }
         }
     }
-    std::cout << "Aoc 4.2: " << winning_number * m_boards.at(last_winner).score() << std::endl;
+    std::cout << "AoC 4.2: " << winning_number * m_boards.at(last_winner).score() << std::endl;
     return 0;
 }
 
