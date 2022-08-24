@@ -20,7 +20,7 @@ class Grid
 {
 public:
     Grid(): m_grid(10, std::vector<uint64_t>(10, 0)) {}
-    void mark_restricted(Line line);
+    void mark(Line line, bool use_diagonal);
     std::vector<std::vector<uint64_t>> m_grid;
     void print();
 };

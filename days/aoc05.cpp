@@ -7,16 +7,17 @@
 #include <iostream>
 #include <sstream>
 
-void Grid::mark_restricted(Line line)
+void Grid::mark(Line line, bool use_diagonal = false)
 {
-    if (line.x1 != line.x2 && line.y1 != line.y2)
+    if (!use_diagonal && line.x1 != line.x2 && line.y1 != line.y2)
     {
         // not marking diagonals
         return;
     }
     size_t x = line.x1;
     size_t y = line.y1;
-    while (true) {
+    while (true)
+    {
         // 1. Resize
         if (y >= m_grid.size())
         {
@@ -29,17 +30,22 @@ void Grid::mark_restricted(Line line)
 
         // 2. Mark
         m_grid[y][x]++;
-        if (x == line.x2 && y == line.y2) break;
+        if (x == line.x2 && y == line.y2)
+        { break; }
 
         // 3. Increment
-        if (x < line.x2) {
+        if (x < line.x2)
+        {
             x++;
-        } else if (x > line.x2) {
+        } else if (x > line.x2)
+        {
             x--;
         }
-        if (y < line.y2) {
+        if (y < line.y2)
+        {
             y++;
-        } else if (y > line.y2) {
+        } else if (y > line.y2)
+        {
             y--;
         }
     }
@@ -50,14 +56,15 @@ void Grid::mark_restricted(Line line)
 [[maybe_unused]]
 void Grid::print()
 {
-    for (auto & i : m_grid)
+    for (auto &i: m_grid)
     {
-        for (unsigned long j : i)
+        for (unsigned long j: i)
         {
             if (j == 0)
             {
                 std::cout << ".";
-            } else {
+            } else
+            {
                 std::cout << j;
             }
         }
@@ -98,14 +105,14 @@ aoc05::aoc05()
 void aoc05::part1()
 {
     Grid grid;
-    for (auto line : m_lines)
+    for (auto line: m_lines)
     {
-        grid.mark_restricted(line);
+        grid.mark(line);
     }
     size_t count = 0;
-    for (const auto &row : grid.m_grid)
+    for (const auto &row: grid.m_grid)
     {
-        for (auto cell : row)
+        for (auto cell: row)
         {
             if (cell > 1)
             {
@@ -119,6 +126,24 @@ void aoc05::part1()
 
 void aoc05::part2()
 {
+    Grid grid;
+    for (auto line: m_lines)
+    {
+        grid.mark(line, true);
+    }
+    size_t count = 0;
+    for (const auto &row: grid.m_grid)
+    {
+        for (auto cell: row)
+        {
+            if (cell > 1)
+            {
+                count++;
+            }
+        }
+    }
+    std::cout << "AoC 5.2: " << count << std::endl;
+
 
 }
 
@@ -131,4 +156,5 @@ void aoc05_1()
 void aoc05_2()
 {
     aoc05 a;
+    a.part2();
 }
