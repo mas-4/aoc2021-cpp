@@ -3,6 +3,7 @@
 #include "days/aoc03.h"
 #include "days/aoc04.h"
 #include "days/aoc05.h"
+#include "days/aoc06.h"
 
 int main()
 {
@@ -16,5 +17,6 @@ int main()
     aoc04_2();
     aoc05_1();
     aoc05_2();
+    aoc06_1();
     return 0;
 }
