@@ -18,7 +18,6 @@ struct instruction {
     int steps;
 };
 
-
 class aoc02
 {
 private:

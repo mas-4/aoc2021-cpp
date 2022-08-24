@@ -74,8 +74,8 @@ uint64_t aoc03::part2()
         }
         co2set = filtered[0].size() > filtered[1].size() ? filtered[1] : filtered[0];
     }
-    ulong o2 = o2set[0].to_ulong();
-    ulong co2 = co2set[0].to_ulong();
+    uint64_t o2 = o2set[0].to_ulong();
+    uint64_t co2 = co2set[0].to_ulong();
 
     return o2 * co2;
 }
