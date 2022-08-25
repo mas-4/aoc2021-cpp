@@ -4,6 +4,7 @@
 #include "days/aoc04.h"
 #include "days/aoc05.h"
 #include "days/aoc06.h"
+#include "days/aoc07.h"
 
 int main()
 {
@@ -19,5 +20,7 @@ int main()
     aoc05_2();
     aoc06_1();
     aoc06_2();
+    aoc07_1();
+    aoc07_2();
     return 0;
 }

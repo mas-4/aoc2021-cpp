@@ -72,7 +72,7 @@ void aoc06::part2()
     {
         fishes[i]++;
     }
-    std::cout << "AoC 6.1: " << how_many_fish(fishes, 256) << std::endl;
+    std::cout << "AoC 6.2: " << how_many_fish(fishes, 256) << std::endl;
 }
 
 aoc06::~aoc06() = default;
