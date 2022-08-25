@@ -98,12 +98,12 @@ uint64_t aoc02::part2()
 void aoc02_1()
 {
     aoc02 a;
-    std::cout << "AoC 2.1: " << a.part1() << std::endl;
+    std::cout << "AoC 02.1: " << a.part1() << std::endl;
 
 }
 
 void aoc02_2()
 {
     aoc02 a;
-    std::cout << "AoC 2.2: " << a.part2() << std::endl;
+    std::cout << "AoC 02.2: " << a.part2() << std::endl;
 }

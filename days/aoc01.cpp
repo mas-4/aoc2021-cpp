@@ -64,11 +64,11 @@ uint32_t aoc01::window_increases()
 
 void aoc01_1(){
     aoc01 a;
-    std::cout << "AoC 1.1: " << a.single_increases() << std::endl;
+    std::cout << "AoC 01.1: " << a.single_increases() << std::endl;
 }
 
 void aoc01_2()
 {
     aoc01 a;
-    std::cout << "AoC 1.2: " << a.window_increases() << std::endl;
+    std::cout << "AoC 01.2: " << a.window_increases() << std::endl;
 }

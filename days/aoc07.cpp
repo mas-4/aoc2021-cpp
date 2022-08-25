@@ -48,7 +48,7 @@ void aoc07::part1()
     {
         total += abs((int)i - (int)median);
     }
-    std::cout << "AoC 7.1: " << total << std::endl;
+    std::cout << "AoC 07.1: " << total << std::endl;
 }
 
 uint64_t fuel_expenditure(std::vector<uint32_t> *crabs, size_t k) {
@@ -75,7 +75,7 @@ void aoc07::part2()
     left = fuel_expenditure(&m_data, left);
     right = fuel_expenditure(&m_data, right);
     uint64_t ans = left < right ? left : right;
-    std::cout << "AoC 7.2: " << ans << std::endl;
+    std::cout << "AoC 07.2: " << ans << std::endl;
 }
 
 void aoc07_1()

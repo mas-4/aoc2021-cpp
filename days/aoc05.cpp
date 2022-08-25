@@ -120,7 +120,7 @@ void aoc05::part1()
             }
         }
     }
-    std::cout << "AoC 5.1: " << count << std::endl;
+    std::cout << "AoC 05.1: " << count << std::endl;
 
 }
 
@@ -142,7 +142,7 @@ void aoc05::part2()
             }
         }
     }
-    std::cout << "AoC 5.2: " << count << std::endl;
+    std::cout << "AoC 05.2: " << count << std::endl;
 
 
 }
