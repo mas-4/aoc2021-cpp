@@ -5,6 +5,7 @@
 #include "days/aoc05.h"
 #include "days/aoc06.h"
 #include "days/aoc07.h"
+#include "days/aoc08.h"
 
 int main()
 {
@@ -22,5 +23,8 @@ int main()
     aoc06_2();
     aoc07_1();
     aoc07_2();
+    aoc08 a8;
+    a8.run_part1();
+    a8.run_part2();
     return 0;
 }
