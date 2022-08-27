@@ -7,6 +7,7 @@
 #include <iostream>
 #include <sstream>
 #include <cmath>
+#include <algorithm>
 
 void aoc08::readInput()
 {
