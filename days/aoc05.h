@@ -37,7 +37,4 @@ public:
     void part2();
 };
 
-void aoc05_1();
-void aoc05_2();
-
 #endif //AOC21CPP_AOC05_H

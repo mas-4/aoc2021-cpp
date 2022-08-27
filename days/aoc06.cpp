@@ -76,15 +76,3 @@ void aoc06::part2()
 }
 
 aoc06::~aoc06() = default;
-
-void aoc06_1()
-{
-    aoc06 a;
-    a.part1();
-}
-
-void aoc06_2()
-{
-    aoc06 a;
-    a.part2();
-}

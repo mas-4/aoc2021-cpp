@@ -152,7 +152,7 @@ Board::~Board()
 = default;
 
 
-uint64_t aoc04::part1()
+void aoc04::part1()
 {
     size_t winner = 0;
     uint16_t winning_number = 0;
@@ -171,10 +171,9 @@ uint64_t aoc04::part1()
     }
     outer:
     std::cout << "AoC 04.1: " << winning_number * m_boards[winner].score() << std::endl;
-    return 0;
 }
 
-uint64_t aoc04::part2()
+void aoc04::part2()
 {
     uint16_t winning_number = 0;
     size_t last_winner = 0;
@@ -195,17 +194,4 @@ uint64_t aoc04::part2()
         }
     }
     std::cout << "AoC 04.2: " << winning_number * m_boards.at(last_winner).score() << std::endl;
-    return 0;
-}
-
-void aoc04_1()
-{
-    aoc04 a;
-    a.part1();
-}
-
-void aoc04_2()
-{
-    aoc04 a;
-    a.part2();
 }

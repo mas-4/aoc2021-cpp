@@ -25,7 +25,7 @@ aoc01::aoc01()
     parseInput();
 }
 
-uint32_t aoc01::single_increases()
+void aoc01::part1()
 {
     uint32_t increases = 0;
     uint32_t last = m_input.at(0);
@@ -37,10 +37,10 @@ uint32_t aoc01::single_increases()
         }
         last = m_input.at(i);
     }
-    return increases;
+    std::cout << "AoC 01.1: " << increases << std::endl;
 }
 
-uint32_t aoc01::window_increases()
+void aoc01::part2()
 {
     uint32_t increases = 0;
     uint32_t first = m_input.at(0);
@@ -59,16 +59,5 @@ uint32_t aoc01::window_increases()
         last = m_input.at(i);
         last_window = first + middle + last;
     }
-    return increases;
-}
-
-void aoc01_1(){
-    aoc01 a;
-    std::cout << "AoC 01.1: " << a.single_increases() << std::endl;
-}
-
-void aoc01_2()
-{
-    aoc01 a;
-    std::cout << "AoC 01.2: " << a.window_increases() << std::endl;
+    std::cout << "AoC 01.2: " << increases << std::endl;
 }

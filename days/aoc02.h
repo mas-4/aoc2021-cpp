@@ -25,12 +25,9 @@ private:
     void parseInput();
 public:
     aoc02();
-    uint64_t part1();
-    uint64_t part2();
+    void part1();
+    void part2();
 };
-
-void aoc02_1();
-void aoc02_2();
 
 
 #endif //AOC21CPP_AOC02_H

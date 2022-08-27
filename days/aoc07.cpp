@@ -78,16 +78,3 @@ void aoc07::part2()
     uint64_t ans = left < right ? left : right;
     std::cout << "AoC 07.2: " << ans << std::endl;
 }
-
-void aoc07_1()
-{
-    aoc07 a;
-    a.part1();
-}
-
-
-void aoc07_2()
-{
-    aoc07 a;
-    a.part2();
-}

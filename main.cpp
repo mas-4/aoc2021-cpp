@@ -11,23 +11,30 @@
 
 int main()
 {
-    aoc01_1();
-    aoc01_2();
-    aoc02_1();
-    aoc02_2();
-    aoc03_1();
-    aoc03_2();
-    aoc04_1();
-    aoc04_2();
-    aoc05_1();
-    aoc05_2();
-    aoc06_1();
-    aoc06_2();
-    aoc07_1();
-    aoc07_2();
+    aoc01 a01;
+    aoc02 a02;
+    aoc03 a03;
+    aoc04 a04;
+    aoc05 a05;
+    aoc06 a06;
+    aoc07 a07;
     aoc08 a08;
     aoc09 a09;
     aoc10 a10;
+    a01.part1();
+    a01.part2();
+    a02.part1();
+    a02.part2();
+    a03.part1();
+    a03.part2();
+    a04.part1();
+    a04.part2();
+    a05.part1();
+    a05.part2();
+    a06.part1();
+    a06.part2();
+    a07.part1();
+    a07.part2();
     a08.part1();
     a08.part2();
     a09.part1();

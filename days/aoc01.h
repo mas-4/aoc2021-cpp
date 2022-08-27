@@ -17,12 +17,9 @@ private:
     void parseInput();
 public:
     aoc01();
-    uint32_t single_increases();
-    uint32_t window_increases();
+    void part1();
+    void part2();
 };
-
-void aoc01_1();
-void aoc01_2();
 
 
 #endif //AOC21CPP_AOC01_H

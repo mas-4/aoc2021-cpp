@@ -21,7 +21,4 @@ public:
     void part2();
 };
 
-void aoc07_1();
-void aoc07_2();
-
 #endif //AOC21CPP_AOC07_H

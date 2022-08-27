@@ -31,12 +31,9 @@ private:
     void readInput();
 public:
     aoc04();
-    uint64_t part1();
-    uint64_t part2();
+    void part1();
+    void part2();
 };
-
-void aoc04_1();
-void aoc04_2();
 
 
 #endif //AOC21CPP_AOC04_H

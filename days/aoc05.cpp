@@ -146,15 +146,3 @@ void aoc05::part2()
 
 
 }
-
-void aoc05_1()
-{
-    aoc05 a;
-    a.part1();
-}
-
-void aoc05_2()
-{
-    aoc05 a;
-    a.part2();
-}
