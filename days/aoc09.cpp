@@ -5,6 +5,7 @@
 #include "aoc09.h"
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 
 void aoc09::readInput()
 {
@@ -30,29 +31,38 @@ aoc09::aoc09()
     readInput();
 }
 
-void print_point(const std::vector<std::vector<uint8_t>> &grid , size_t y, size_t x)
+[[maybe_unused]]
+void print_point(const std::vector<std::vector<uint8_t>> &grid, size_t y, size_t x)
 {
     // above
-    if (y > 0) {
+    if (y > 0)
+    {
         std::cout << "_" << (int) grid[y - 1][x] << "_" << std::endl;
-    } else {
+    } else
+    {
         std::cout << "___" << std::endl;
     }
-    if (x > 0) {
+    if (x > 0)
+    {
         std::cout << (int) grid[y][x - 1];
-    } else {
+    } else
+    {
         std::cout << "_";
     }
     std::cout << (int) grid[y][x];
-    if (x < grid[y].size() - 1) {
+    if (x < grid[y].size() - 1)
+    {
         std::cout << (int) grid[y][x + 1] << std::endl;
-    } else {
+    } else
+    {
         std::cout << "_" << std::endl;
     }
     // below
-    if (y < grid.size() - 1) {
+    if (y < grid.size() - 1)
+    {
         std::cout << "_" << (int) grid[y + 1][x] << "_" << std::endl;
-    } else {
+    } else
+    {
         std::cout << "___" << std::endl;
     }
     std::cout << std::endl;
@@ -96,49 +106,109 @@ void aoc09::part1()
     std::cout << "AoC 09.1: " << total_risk << std::endl;
 }
 
+bool is_lowpoint(const std::vector<std::vector<uint8_t>> &grid, size_t y, size_t x)
+{
+    // above
+    if (y > 0 && grid[y - 1][x] <= grid[y][x])
+    {
+        return false;
+    }
+    // down
+    if (y < grid.size() - 1 && grid[y + 1][x] <= grid[y][x])
+    {
+        return false;
+    }
+    // left
+    if (x > 0 && grid[y][x - 1] <= grid[y][x])
+    {
+        return false;
+    }
+    // right
+    if (x < grid[y].size() - 1 && grid[y][x + 1] <= grid[y][x])
+    {
+        return false;
+    }
+    return true;
+}
+
 void aoc09::part2()
 {
-    std::vector<std::tuple<size_t, size_t>> stack;
-    std::vector<std::tuple<size_t, size_t>> seen;
+    const size_t max_level = 9;
+    std::vector<std::pair<size_t, size_t>> stack;
+    std::vector<std::pair<size_t, size_t>> seen;
+    std::vector<size_t> sizes;
     for (size_t y = 0; y < m_grid.size(); y++)
     {
         for (size_t x = 0; x < m_grid[y].size(); x++)
         {
-            if (std::find(seen.begin(), seen.end(), std::tuple<size_t, size_t>(y, x)) == seen.end())
+            auto current_pair = std::pair<size_t, size_t>(x, y);
+            if (std::find(seen.begin(), seen.end(), current_pair) != seen.end())
             {
                 continue;
             }
-            stack.emplace_back(std::tuple<size_t, size_t>(y, x));
-            while (!stack.empty()) {
+            if (m_grid[y][x] == 9)
+            {
+                seen.push_back(current_pair);
+                continue;
+            }
+            if (!is_lowpoint(m_grid, y, x))
+            {
+                continue;
+            }
+            stack.push_back(current_pair);
+            size_t current_size = 0;
+            while (!stack.empty())
+            {
                 auto point = stack.back();
                 stack.pop_back();
-                seen.emplace_back(point);
-                size_t y1 = std::get<0>(point);
-                size_t x1 = std::get<1>(point);
-                // up
-                if (y1 > 0 && m_grid[y1 - 1][x1] < m_grid[y1][x1] && std::find(seen.begin(), seen.end(), std::tuple<size_t, size_t>(y1 - 1, x1)) == seen.end())
+                if (std::find(seen.begin(), seen.end(), point) != seen.end())
                 {
-                    stack.emplace_back(std::tuple<size_t, size_t>(y1 - 1, x1));
+                    continue;
+                }
+                seen.push_back(point);
+                auto [x1, y1] = point;
+                current_size++;
+                uint8_t depth = m_grid[y1][x1];
+                // up
+                auto up = std::pair<size_t, size_t>(x1, y1 - 1);
+                auto down = std::pair<size_t, size_t>(x1, y1 + 1);
+                auto left = std::pair<size_t, size_t>(x1 - 1, y1);
+                auto right = std::pair<size_t, size_t>(x1 + 1, y1);
+                if (
+                        y1 > 0
+                        && m_grid[y1 - 1][x1] < max_level
+                        && m_grid[y1 - 1][x1] > depth)
+                {
+                    stack.emplace_back(up);
                 }
                 // down
-                if ((y1 < m_grid.size() - 1) && m_grid[y1 + 1][x1] < m_grid[y1][x1] && std::find(seen.begin(), seen.end(), std::tuple<size_t, size_t>(y1 + 1, x1)) == seen.end())
+                if (
+                        y1 < m_grid.size() - 1
+                        && m_grid[y1 + 1][x1] < max_level
+                        && m_grid[y1 + 1][x1] > depth)
                 {
-                    stack.emplace_back(std::tuple<size_t, size_t>(y1 + 1, x1));
+                    stack.emplace_back(down);
                 }
                 // left
-                if (x1 > 0 && m_grid[y1][x1 - 1] < m_grid[y1][x1] && std::find(seen.begin(), seen.end(), std::tuple<size_t, size_t>(y1, x1 - 1)) == seen.end())
+                if (
+                        x1 > 0
+                        && m_grid[y1][x1 - 1] < max_level
+                        && m_grid[y1][x1 - 1] > depth)
                 {
-                    stack.emplace_back(std::tuple<size_t, size_t>(y1, x1 - 1));
+                    stack.emplace_back(std::pair<size_t, size_t>(left));
                 }
                 // right
-                if ((x1 < m_grid[y1].size() - 1) && m_grid[y1][x1 + 1] < m_grid[y1][x1] && std::find(seen.begin(), seen.end(), std::tuple<size_t, size_t>(y1, x1 + 1)) == seen.end())
+                if (
+                        x1 < m_grid[y1].size() - 1
+                        && m_grid[y1][x1 + 1] < max_level
+                        && m_grid[y1][x1 + 1] > depth)
                 {
-                    stack.emplace_back(std::tuple<size_t, size_t>(y1, x1 + 1));
+                    stack.emplace_back(right);
                 }
             }
+            sizes.push_back(current_size);
         }
     }
-
-
-
+    std::sort(sizes.rbegin(), sizes.rend());
+    std::cout << "AoC 09.2: " << sizes[0] * sizes[1] * sizes[2] << std::endl;
 }
