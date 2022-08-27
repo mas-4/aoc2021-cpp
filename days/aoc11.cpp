@@ -123,5 +123,24 @@ void aoc11::part1()
 
 void aoc11::part2()
 {
-
+    size_t step = 0;
+    while (true) {
+        step++;
+        for (unsigned int & j : m_data) j++;
+        std::vector<bool> flashed(m_data.size(), false);
+        size_t flashes_this_step = 0;
+        while (true) {
+            size_t flashes_this_round = flash(m_data, flashed);
+            flashes_this_step += flashes_this_round;
+            if (flashes_this_round == 0)
+                break;
+        }
+        if (flashes_this_step == m_data.size())
+            break;
+        for (size_t j = 0; j < flashed.size(); j++) {
+            if (flashed[j])
+                m_data[j] = 0;
+        }
+    }
+    std::cout << "AoC 11.2: " << step << std::endl;
 }
