@@ -40,5 +40,6 @@ int main()
     a09.part1();
     a09.part2();
     a10.part1();
+    a10.part2();
     return 0;
 }
