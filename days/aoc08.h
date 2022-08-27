@@ -17,8 +17,8 @@ private:
     std::vector<std::vector<std::string>> m_outputs;
 public:
     aoc08();
-    void run_part1();
-    void run_part2();
+    void part1();
+    void part2();
 };
 
 

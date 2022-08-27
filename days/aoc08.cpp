@@ -56,7 +56,7 @@ aoc08::aoc08()
 
 // Known digits: 1: 2, 4: 4, 7: 3, 8: 7
 
-void aoc08::run_part1()
+void aoc08::part1()
 {
     size_t count = 0;
     for (const auto &output: m_outputs)
@@ -143,7 +143,7 @@ char get_elements_not_contained(const std::string &superset, const std::string &
     exit(1);
 }
 
-void aoc08::run_part2()
+void aoc08::part2()
 {
     size_t sum = 0;
     for (size_t i = 0; i < m_inputs.size(); i++)
