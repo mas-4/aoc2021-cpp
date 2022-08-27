@@ -8,6 +8,7 @@
 #include "days/aoc08.h"
 #include "days/aoc09.h"
 #include "days/aoc10.h"
+#include "days/aoc11.h"
 
 int main()
 {
@@ -21,6 +22,7 @@ int main()
     aoc08 a08;
     aoc09 a09;
     aoc10 a10;
+    aoc11 a11;
     a01.part1();
     a01.part2();
     a02.part1();
@@ -41,5 +43,7 @@ int main()
     a09.part2();
     a10.part1();
     a10.part2();
+    a11.part1();
+    a11.part2();
     return 0;
 }
